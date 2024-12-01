@@ -19,7 +19,9 @@ public class Program {
 	
 		Statement st = conn.createStatement();
 			
-		ResultSet rs = st.executeQuery("select*from tb_order");
+		ResultSet rs = st.executeQuery("SELECT * FROM tb_order "
+				+ "INNER JOIN tb_order_product ON tb_order.id = tb_order_product.order_id "
+				+ "INNER JOIN tb_product ON tb_product.id = tb_order_product.product_id");
 	
 		while (rs.next()) {
 
